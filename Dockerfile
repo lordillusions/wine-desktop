@@ -18,12 +18,13 @@ RUN curl -O https://dl.winehq.org/wine-builds/Release.key && \
     apt-key add Release.key && \
     apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/' && \
     add-apt-repository ppa:noobslab/apps && \
-    apt-get update && \
     dpkg --add-architecture i386 && \
+    apt-get update && \
     apt-get install -y --no-install-recommends \
         netcat \
         xterm \
         gettext \
+        wine-steable \
         winehq-stable \
         playonlinux && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
