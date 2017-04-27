@@ -16,15 +16,15 @@ WORKDIR /tmp
 # https://www.winehq.org/pipermail/wine-devel/2017-March/117104.html
 RUN curl -O https://dl.winehq.org/wine-builds/Release.key && \
     apt-key add Release.key && \
-    apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/' && \
-    add-apt-repository ppa:noobslab/apps && \
+    apt-add-repository -y 'https://dl.winehq.org/wine-builds/ubuntu/' && \
+    add-apt-repository -y ppa:noobslab/apps && \
     dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         netcat \
         xterm \
         gettext \
-        wine-steable \
+        wine-stable \
         winehq-stable \
         playonlinux && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
