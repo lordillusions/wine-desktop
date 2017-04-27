@@ -13,8 +13,10 @@ LABEL maintainer Xiangmin Jiao <xmjiao@gmail.com>
 WORKDIR /tmp
 
 # Install Wine 2.0 from official Wine PPA and playonwine from noobslab.com
-# http://ubuntuhandbook.org/index.php/2017/01/install-wine-2-0-ubuntu-16-04-14-04-16-10/
-RUN add-apt-repository ppa:wine/wine-builds && \
+# https://www.winehq.org/pipermail/wine-devel/2017-March/117104.html
+RUN curl -O https://dl.winehq.org/wine-builds/Release.key && \
+    apt-key add Release.key && \
+    apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/' && \
     add-apt-repository ppa:noobslab/apps && \
     apt-get update && \
     dpkg --add-architecture i386 && \
@@ -22,7 +24,7 @@ RUN add-apt-repository ppa:wine/wine-builds && \
         netcat \
         xterm \
         gettext \
-        wine-staging \
+        winehq-stable \
         playonlinux && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
