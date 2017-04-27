@@ -24,6 +24,10 @@ RUN add-apt-repository ppa:wine/wine-builds && \
         wine-staging && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Install the latest version of winetricks
+RUN curl -SL 'https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks' -o /usr/local/bin/winetricks && \
+    chmod +x /usr/local/bin/winetricks
+
 ENV PATH=/opt/wine-staging/bin:$PATH
 
 WORKDIR $DOCKER_HOME
