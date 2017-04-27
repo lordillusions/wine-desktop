@@ -12,27 +12,25 @@ LABEL maintainer Xiangmin Jiao <xmjiao@gmail.com>
 
 WORKDIR /tmp
 
-# Install Wine 2.0 from official Wine PPA and playonwine from noobslab.com
-# https://www.winehq.org/pipermail/wine-devel/2017-March/117104.html
+# Install Wine 2.6 from official Wine PPA
 RUN curl -O https://dl.winehq.org/wine-builds/Release.key && \
     apt-key add Release.key && \
     apt-add-repository -y 'https://dl.winehq.org/wine-builds/ubuntu/' && \
-    add-apt-repository -y ppa:noobslab/apps && \
     dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         netcat \
         xterm \
         gettext \
-        wine-stable \
-        winehq-stable \
-        playonlinux && \
+        wine-devel \
+        winehq-devel && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install the latest version of winetricks
 RUN curl -SL 'https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks' -o /usr/local/bin/winetricks && \
     chmod +x /usr/local/bin/winetricks
 
-ENV PATH=/opt/wine-staging/bin:$PATH
-
+USER $DOCKER_HOME
 WORKDIR $DOCKER_HOME
+ENV WINEPREFIX=$DOCKER_HOME/win7 \
+    WINEARCH=win32
