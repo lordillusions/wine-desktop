@@ -3,5 +3,5 @@ services:
 
 script:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_USERPASS"
-  - docker build --tag x11vnc/wine:2.0 --tag x11vnc/wine:latest . && docker push x11vnc/wine
+  - docker build --tag x11vnc/wine:2.6 --tag x11vnc/wine:latest . && docker push x11vnc/wine
   - docker images
