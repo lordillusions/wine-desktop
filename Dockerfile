@@ -7,7 +7,7 @@
 # Authors:
 # Xiangmin Jiao <xmjiao@gmail.com>
 
-FROM x11vnc/ubuntu:16.04
+FROM x11vnc/ubuntu:light
 LABEL maintainer Xiangmin Jiao <xmjiao@gmail.com>
 
 WORKDIR /tmp
