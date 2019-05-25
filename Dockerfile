@@ -15,7 +15,7 @@ WORKDIR /tmp
 # Install Wine 2.6 from official Wine PPA
 RUN curl -O https://dl.winehq.org/wine-builds/Release.key && \
     apt-key add Release.key && \
-    apt-add-repository -y 'https://dl.winehq.org/wine-builds/ubuntu/' && \
+    apt-add-repository -y --allow-unauthenticated 'https://dl.winehq.org/wine-builds/ubuntu/' && \
     dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
